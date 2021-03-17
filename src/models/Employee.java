@@ -1,3 +1,4 @@
+//DTOモデルの作成（データの概要を置いておきデータを受け渡すだけの役割）
 package models;
 
 import java.sql.Timestamp;

@@ -1,4 +1,4 @@
-//データの取扱処理を記述するDAOの作成（おまじないの場所）
+//DAOモデルの作成（データベースへ接続しやり取りを行う役割）
 package utils;
 
 import javax.persistence.EntityManager;

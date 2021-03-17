@@ -40,15 +40,19 @@ public class EmployeesIndexServlet extends HttpServlet {
         EntityManager em = DBUtil.createEntityManager();
 
         //以下はページネーション
+        // 開くページ数を取得（デフォルトは1ページ目）
         int page = 1;
         try{
             page = Integer.parseInt(request.getParameter("page"));
         } catch(NumberFormatException e) { }
+
+        // 最大件数と開始位置を指定してメッセージを取得
         List<Employee> employees = em.createNamedQuery("getAllEmployees", Employee.class)
                                      .setFirstResult(15 * (page - 1))
                                      .setMaxResults(15)
                                      .getResultList();
 
+        // 全件数を取得
         long employees_count = (long)em.createNamedQuery("getEmployeesCount", Long.class)
                                        .getSingleResult();
 
