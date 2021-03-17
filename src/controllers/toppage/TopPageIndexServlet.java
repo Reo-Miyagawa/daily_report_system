@@ -29,6 +29,11 @@ public class TopPageIndexServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if(request.getSession().getAttribute("flush") != null) {
+            request.setAttribute("flush", request.getSession().getAttribute("flush"));
+            request.getSession().removeAttribute("flush");
+        }
+
         //RequestDispatcherは情報や処理内容を任意のファイル先等に転送できるもの
         //サーブレット作成時に記述したマッピング・アクセス先にアクセスがされるとまずこのコントローラーで詳細を受け取る
         //別途記述する処理やアクセス時の情報はrequestが保持している
